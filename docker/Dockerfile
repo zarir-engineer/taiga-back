@@ -17,7 +17,7 @@ ENV PYTHONFAULTHANDLER=1
 # Use a virtualenv
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN python -m pip install --upgrade setuptools
+RUN pip install --upgrade pip setuptools
 
 # Get the code
 COPY . /taiga-back
