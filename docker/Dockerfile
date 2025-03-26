@@ -17,7 +17,7 @@ ENV PYTHONFAULTHANDLER=1
 # Use a virtualenv
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN pip install --upgrade pip setuptools
+RUN pip install --upgrade pip setuptools wheel
 
 # Get the code
 COPY . /taiga-back
@@ -59,7 +59,7 @@ RUN set -eux; \
 	rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc; \
     # install Taiga dependencies
     python -m pip install --upgrade pip; \
-    python -m pip install wheel; \
+#     python -m pip install wheel; \
     python -m pip install -r requirements.txt; \
     python -m pip install -r requirements-contribs.txt; \
     python manage.py compilemessages; \
