@@ -35,6 +35,8 @@ RUN set -eux; \
        # libpq5 needed in runtime for psycopg2
        libpq5 \
        libpq-dev \
+       libxml2 \
+       libxslt \
        libxml2-dev \
        libxslt-dev \
        git \
