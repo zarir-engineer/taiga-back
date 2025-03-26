@@ -17,6 +17,7 @@ ENV PYTHONFAULTHANDLER=1
 # Use a virtualenv
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+RUN python -m pip install --upgrade setuptools
 
 # Get the code
 COPY . /taiga-back
@@ -30,7 +31,6 @@ RUN set -eux; \
     apt-get update; \
     # install system dependencies
     apt-get install -y \
-       python3-distutils \
        build-essential \
        gettext \
        # libpq5 needed in runtime for psycopg2
@@ -59,7 +59,6 @@ RUN set -eux; \
     # install Taiga dependencies
     python -m pip install --upgrade pip; \
     python -m pip install wheel; \
-    python -m pip install --upgrade setuptools; \
     python -m pip install -r requirements.txt; \
     python -m pip install -r requirements-contribs.txt; \
     python manage.py compilemessages; \
