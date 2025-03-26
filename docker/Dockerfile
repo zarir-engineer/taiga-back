@@ -36,9 +36,9 @@ RUN set -eux; \
        libpq5 \
        libpq-dev \
        libxml2 \
-       libxslt \
+       libxslt1.1 \
        libxml2-dev \
-       libxslt-dev \
+       libxslt1-dev \
        git \
        net-tools \
        procps \
