@@ -1,9 +1,12 @@
 # Use a lightweight Python base image
 FROM python:3.8
 
-
-# Install system dependencies needed for package builds
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
+    libxml2=2.9.10+dfsg-5ubuntu0.20.04.5 \
+    libxslt1.1=1.1.34-4ubuntu0.20.04.1 \
+    libxml2-dev \
+    libxslt-dev \
     gcc \
     python3-venv \
     python3-dev \
@@ -11,8 +14,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libffi-dev \
     build-essential \
-    libxml2-dev \
-    libxslt-dev \
     zlib1g-dev \
     gettext \
     git \
@@ -28,9 +29,12 @@ ENV PATH="/taiga/venv/bin:$PATH"
 
 # Set working directory
 WORKDIR /taiga-back
-
 # Upgrade pip, setuptools, and wheel before installing any Python packages
 RUN /taiga/venv/bin/pip install --no-cache-dir --upgrade pip setuptools wheel
+
+RUN /taiga/venv/bin/pip install --no-cache-dir --upgrade cython
+RUN /taiga/venv/bin/pip install --no-cache-dir --no-binary lxml lxml==4.9.2
+
 
 # **Manually set environment variables for compilation**
 ENV CFLAGS="-fPIC"
