@@ -30,6 +30,7 @@ RUN set -eux; \
     apt-get update; \
     # install system dependencies
     apt-get install -y \
+       python3-distutils \
        build-essential \
        gettext \
        # libpq5 needed in runtime for psycopg2
