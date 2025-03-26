@@ -38,7 +38,7 @@ RUN set -eux; \
        libxml2 \
        libxslt1.1 \
        libxml2-dev \
-       libxslt1-dev \
+       libxslt-dev \
        git \
        net-tools \
        procps \
