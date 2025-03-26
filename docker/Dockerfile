@@ -3,8 +3,8 @@ FROM python:3.8
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    libxml2=2.9.10+dfsg-5ubuntu0.20.04.5 \
-    libxslt1.1=1.1.34-4ubuntu0.20.04.1 \
+    libxml2 \
+    libxslt1.1 \
     libxml2-dev \
     libxslt-dev \
     gcc \
@@ -47,7 +47,7 @@ RUN /taiga/venv/bin/pip install --no-cache-dir --force-reinstall cffi
 COPY requirements.txt requirements-contribs.txt ./
 
 # Install NumPy first (ensures prebuilt wheel is used)
-RUN /taiga/venv/bin/pip install --no-cache-dir "numpy>=2.2.4"
+RUN /taiga/venv/bin/pip install --no-cache-dir "numpy>=1.22.4"
 
 # Install Python dependencies
 RUN /taiga/venv/bin/pip install --no-cache-dir --use-deprecated=legacy-resolver -r requirements.txt \
