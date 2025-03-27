@@ -17,8 +17,8 @@ ENV PYTHONFAULTHANDLER=1
 # Use a virtualenv
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN pip install --upgrade pip setuptools wheel
-
+RUN python3.11 -m pip install setuptools
+RUN python3.11 -m pip install --upgrade pip wheel
 # Get the code
 COPY . /taiga-back
 WORKDIR /taiga-back
